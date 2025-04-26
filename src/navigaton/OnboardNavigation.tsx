@@ -68,27 +68,27 @@ function CustomTabBar({state, position, navigation}: MaterialTopTabBarProps) {
 }
 function OnboardNavigation() {
   return (
+    // <Tab.Navigator
+    //   initialRouteName="ScreenOne"
+    //   screenOptions={{
+    //     tabBarStyle: {backgroundColor: 'white'},
+    //     tabBarIndicatorStyle: {
+    //       backgroundColor: 'black', // Set the active tab indicator color
+    //       padding: 2,
+    //       height: 3,
+    //     },
+    //     tabBarItemStyle: {
+    //       marginHorizontal: 8, // Add horizontal space between each tab (adjust the value for desired gap)
+    //     },
+    //     tabBarLabel: () => null, // Hide tab names
+    //   }}>
     <Tab.Navigator
-      initialRouteName="ScreenOne"
-      screenOptions={{
-        tabBarStyle: {backgroundColor: 'white'},
-        tabBarIndicatorStyle: {
-          backgroundColor: 'black', // Set the active tab indicator color
-          padding: 2,
-          height: 3,
-        },
-        tabBarItemStyle: {
-          marginHorizontal: 8, // Add horizontal space between each tab (adjust the value for desired gap)
-        },
-        tabBarLabel: () => null, // Hide tab names
-      }}>
-      {/* <Tab.Navigator
       tabBar={props => <CustomTabBar {...props} />}
       screenOptions={{
         tabBarStyle: {
           backgroundColor: 'white',
         },
-      }}> */}
+      }}>
       <Tab.Screen name="ScreenOne" component={Onboarding1} />
       <Tab.Screen name="ScreenTwo" component={Onboarding2} />
       <Tab.Screen name="ScreenThree" component={Onboarding3} />
