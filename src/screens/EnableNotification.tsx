@@ -2,8 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import OnboardHeadding from '../components/OnboardHeadding';
 import CustomButton from '../components/Buttons/CustomButton';
+import {useNavigateToScreen} from '../hooks/useNavigateToScreen';
 
 export default function EnableNotification() {
+  const navigateToScreen = useNavigateToScreen();
+  const isNotificationEnabled = () => {
+    navigateToScreen('BottomTabs');
+  };
   return (
     <View style={notificationStyle.container}>
       <View
@@ -19,10 +24,13 @@ export default function EnableNotification() {
           <Image source={require('../../assets/Images/notification.png')} />
         </View>
       </View>
-      <CustomButton buttonLabel="Enable Notifications" onPress={() => {}} />
+      <CustomButton
+        buttonLabel="Enable Notifications"
+        onPress={isNotificationEnabled}
+      />
       <CustomButton
         buttonLabel="Skip For Now"
-        onPress={() => {}}
+        onPress={isNotificationEnabled}
         backgroundColor="#F2F2F3"
         textColor="black"
       />

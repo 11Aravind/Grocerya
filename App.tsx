@@ -9,6 +9,8 @@ import OtpScreen from './src/screens/OtpScreen';
 import Category from './src/screens/Category';
 import Location from './src/screens/Location';
 import EnableNotification from './src/screens/EnableNotification';
+import HomeScreen from './src/screens/HomeScreen';
+import BottomTabs from './src/navigaton/BottomTabs';
 
 function App(): React.JSX.Element {
   const Stack = createStackNavigator();
@@ -28,6 +30,8 @@ function App(): React.JSX.Element {
           name="enableNotification"
           component={EnableNotification}
         />
+        <Stack.Screen name="BottomTabs" component={BottomTabs} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

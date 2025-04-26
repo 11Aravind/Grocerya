@@ -8,5 +8,7 @@ export type RootStackParamList = {
     selectCategory: undefined;
     setLocation: undefined;
     enableNotification: undefined;
+    home: undefined;
+    BottomTabs: undefined;
     // Add other screens here as needed
   };
