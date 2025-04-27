@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import CustomButton from '../components/Buttons/CustomButton';
 import OnboardHeadding from '../components/OnboardHeadding';
@@ -6,6 +6,7 @@ import {useNavigateToScreen} from '../hooks/useNavigateToScreen';
 
 export default function Login() {
   const navigateToScreen = useNavigateToScreen();
+  const [phoneNumber, setPhoneNumber] = useState('');
   const handleLogin = () => {
     navigateToScreen('otpScreen');
   };
@@ -72,14 +73,20 @@ export default function Login() {
                 borderRadius: 8,
                 backgroundColor: '#F2F2F3',
               }}
+              value={phoneNumber}
               placeholder="Phone number"
               keyboardType="phone-pad"
               maxLength={10}
+              onChangeText={value => setPhoneNumber(value)}
             />
           </View>
         </View>
       </View>
-      <CustomButton buttonLabel="Continue" onPress={handleLogin} />
+      <CustomButton
+        buttonLabel="Continue"
+        onPress={handleLogin}
+        disabled={phoneNumber?.length !== 10}
+      />
     </View>
   );
 }
