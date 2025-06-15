@@ -7,6 +7,7 @@ import {
   TextStyle,
   ActivityIndicator,
 } from 'react-native';
+import { responsive } from '../../utils/responsive';
 
 interface CustomButtonProps {
   buttonLabel: string;
@@ -51,17 +52,17 @@ export default function CustomButton({
 
 const styles = StyleSheet.create({
   button: {
-    height: 52,
+    height: responsive.height(52),
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
-    borderRadius: 100,
+    marginBottom: responsive.margin(20),
+    borderRadius: responsive.radius(100),
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: responsive.font(16),
     fontFamily: 'Poppins-medium',
-    // fontWeight: 'bold',
+    paddingHorizontal: responsive.padding(20),
   },
 });

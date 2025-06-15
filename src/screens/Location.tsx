@@ -11,6 +11,7 @@ import OnboardingLayout from '../components/OnboardingLayout';
 import OnboardButton from '../components/Buttons/OnboardButton';
 import CustomButton from '../components/Buttons/CustomButton';
 import {useNavigateToScreen} from '../hooks/useNavigateToScreen';
+import { responsive } from '../utils/responsive';
 
 export default function Location() {
   const navigateToScreen = useNavigateToScreen();
@@ -37,7 +38,7 @@ export default function Location() {
 const onboardStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: responsive.padding(20),
     backgroundColor: '#fff',
   },
 });

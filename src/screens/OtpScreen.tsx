@@ -4,6 +4,7 @@ import CustomButton from '../components/Buttons/CustomButton';
 import OnboardHeadding from '../components/OnboardHeadding';
 import {useNavigateToScreen} from '../hooks/useNavigateToScreen';
 import Toast from 'react-native-toast-message';
+import {responsive} from '../utils/responsive';
 
 export default function OtpScreen() {
   const dummyArray = new Array(5).fill(0);
@@ -85,13 +86,13 @@ export default function OtpScreen() {
                 }}
                 style={{
                   borderWidth: 0,
-                  height: 71,
-                  width: 70,
-                  padding: 10,
-                  borderRadius: 8,
+                  height: responsive.height(71),
+                  width: responsive.width(70),
+                  padding: responsive.padding(10),
+                  borderRadius: responsive.radius(8),
                   backgroundColor: '#F2F2F3',
                   textAlign: 'center',
-                  fontSize: 20,
+                  fontSize: responsive.font(20),
                   fontWeight: 'bold',
                   color: 'black',
                 }}

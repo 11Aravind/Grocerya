@@ -1,7 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'; // You can use Feather, MaterialIcons etc.
+import { responsive } from '../utils/responsive';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,6 +44,27 @@ export default function BottomTabs() {
       initialRouteName="Home"
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
+        // Add these properties to remove tap effects
+        tabBarStyle: {
+          height: responsive.height(84),
+          backgroundColor: 'white',
+          borderTopWidth: 0,
+          elevation: 0,
+          paddingHorizontal: responsive.padding(30),
+          paddingTop: responsive.padding(16),    // Responsive top padding
+          paddingBottom: responsive.padding(16), // Responsive bottom padding
+        },
+        tabBarItemStyle: {
+          // Adjust styles without using android_ripple
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        tabBarButton: (props) => (
+          <TouchableOpacity
+            {...(props as TouchableOpacityProps)}
+            activeOpacity={1}
+          />
+        ),
         tabBarIcon: ({focused, color, size}) => {
           let iconName = '';
 
@@ -72,7 +94,7 @@ export default function BottomTabs() {
               }}>
               <Icon
                 name={iconName}
-                size={20}
+                size={responsive.font(20)}
                 color={focused ? 'black' : 'gray'}
               />
               {focused && (
@@ -93,16 +115,6 @@ export default function BottomTabs() {
               )}
             </View>
           );
-        },
-        tabBarStyle: {
-          height: 84, // Keeps the tab height at 84
-          backgroundColor: 'white',
-          borderTopWidth: 0,
-          elevation: 0,
-          paddingHorizontal: 30,
-          // paddingBottom: 10, // You can adjust this padding as necessary
-          // marginBottom: 10, // This adds the space between the tab and the screen
-          paddingTop: 20, // This adds the space between the tab and the screen
         },
         headerShown: false,
       })}>

@@ -1,5 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import { responsive } from '../utils/responsive';
+
 interface OnboardHeaddingProps {
   title: string;
   subTitle: string;
@@ -36,21 +38,21 @@ export default function OnboardHeadding({
 }
 const onboardHeaddingStyle = StyleSheet.create({
   headdingContainer: {
-    gap: 8,
-    marginTop: 30,
+    gap: responsive.height(8),
+    marginTop: responsive.margin(30),
   },
   loginHeadding: {
     fontFamily: 'poppins-semiBold',
-    fontSize: 20,
+    fontSize: responsive.font(20),
     color: 'black',
   },
   subTitle: {
     color: '#777777',
-    fontSize: 16,
+    fontSize: responsive.font(16),
     fontFamily: 'poppins-regular',
   },
   onBoardDescStyle: {
-    lineHeight: 25,
+    lineHeight: responsive.height(25),
     fontFamily: 'poppins-semiBold',
   },
 });
