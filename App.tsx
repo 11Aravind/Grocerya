@@ -19,7 +19,8 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="SplashScreen"
-        screenOptions={{headerShown: false}}>
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="OnboardNavigation" component={OnboardNavigation} />
         <Stack.Screen name="login" component={Login} />
@@ -33,7 +34,7 @@ function App(): React.JSX.Element {
         <Stack.Screen
           name="BottomTabs"
           component={BottomTabs}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
