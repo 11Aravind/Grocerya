@@ -30,8 +30,11 @@ function App(): React.JSX.Element {
           name="enableNotification"
           component={EnableNotification}
         />
-        <Stack.Screen name="BottomTabs" component={BottomTabs} options={{ headerShown: false }} />
-
+        <Stack.Screen
+          name="BottomTabs"
+          component={BottomTabs}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

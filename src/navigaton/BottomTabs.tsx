@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'; // You can use Feather, MaterialIcons etc.
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +42,7 @@ export default function BottomTabs() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({route}) => ({
+        tabBarShowLabel: false,
         tabBarIcon: ({focused, color, size}) => {
           let iconName = '';
 
@@ -49,43 +50,71 @@ export default function BottomTabs() {
             iconName = 'home';
           } else if (route.name === 'Bag') {
             iconName = 'shopping-bag';
-          } else if (route.name === 'Bookmark') {
+          } else if (route.name === 'Favorite') {
             iconName = 'bookmark';
           } else if (route.name === 'Profile') {
             iconName = 'user';
           }
 
           return (
-            <Icon
-              name={iconName}
-              size={24}
-              color={focused ? 'black' : 'gray'}
-            />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: focused ? '#EEEEEE' : 'transparent',
+                paddingHorizontal: focused ? 14 : 0,
+                paddingVertical: focused ? 6 : 0,
+                borderRadius: 10,
+                minWidth: focused ? 100 : 0,
+                minHeight: focused ? 40 : 0,
+                marginBottom: 8, // Adding margin to create space between the tab and icon
+              }}>
+              <Icon
+                name={iconName}
+                size={20}
+                color={focused ? 'black' : 'gray'}
+              />
+              {focused && (
+                <Text
+                  style={{
+                    fontSize: 16,
+                    color: 'black',
+                    marginLeft: 8,
+                    fontWeight: '500',
+                    fontFamily: 'poppins-medium',
+                    includeFontPadding: false, // 👈 remove extra font padding (optional, nice)
+                    textAlignVertical: 'center',
+                  }}
+                  numberOfLines={1}
+                  ellipsizeMode="clip">
+                  {route.name}
+                </Text>
+              )}
+            </View>
           );
         },
-        tabBarLabel: ({focused}) =>
-          focused ? (
-            <Text style={{fontSize: 12, color: 'black', marginTop: 4}}>
-              {route.name}
-            </Text>
-          ) : null, // Only show label if focused
         tabBarStyle: {
-          height: 70,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          height: 84, // Keeps the tab height at 84
           backgroundColor: 'white',
-          position: 'absolute',
-          paddingBottom: 10,
-          paddingTop: 10,
+          borderTopWidth: 0,
+          elevation: 0,
+          paddingHorizontal: 30,
+          // paddingBottom: 10, // You can adjust this padding as necessary
+          // marginBottom: 10, // This adds the space between the tab and the screen
+          paddingTop: 20, // This adds the space between the tab and the screen
         },
-        tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Bag" component={BagScreen} />
-      <Tab.Screen name="Bookmark" component={BookmarkScreen} />
+      <Tab.Screen name="Favorite" component={BookmarkScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
+
+
+
+
+
